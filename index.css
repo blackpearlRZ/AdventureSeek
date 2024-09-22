@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Qwitcher+Grypen:wght@400;700&display=swap');
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+    --span--color: #43766C;
+    --background-color: #ffffff; 
+    --default-color: #9AD0C2;
+    --heading-color: #265073;
+    --accent-color: #ce1212;
+    --surface-color: #fbf9e9; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  }
+  
+  /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+  :root {
+    --nav-color: black;  /* The default color of the main navmenu links */
+    --nav-hover-color: rgb(40, 77, 117); /* Applied to main navmenu links when they are hovered over or active */
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins';
+    width: fit-content;
+}
+span{
+    color: var(--span--color);
+    font-size: 2rem;
+}
+a{
+    text-decoration: none;
+    color: var(--nav-color);
+}
+ul a:hover{
+    color: var(--surface-color) ;
+}
+header>ul{
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    font-weight: 600;
+}
+.btn,.logo{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn{
+    font-weight: 600;
+}
+header button a{
+    color: var(--span--color);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+header button:hover{
+    background-color: var(--surface-color);
+    cursor: pointer;
+}
+header{
+    z-index: 1000;
+    background-color: var(--default-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem 0 ;
+    align-items: center;
+    position: sticky;
+    top: 0; /* Ensure it stays above other elements */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+header button{
+    border: none ;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color:white;
+    padding: 0.4rem 0.7rem;
+    border-radius: 1.3rem;
+}
+#tour h3,#home h3{
+    font-family: "Qwitcher Grypen",sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--span--color);
+}
+#tour h1,#home h1{
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+#tour span,#home span{
+    font-weight: 400;
+    font-size: 3rem;
+    font-family: "Matemasie";
+}
+#home{
+    display: flex;
+    scroll-margin-top: 70px;  
+    padding: 0 6rem;
+    gap: 10rem;
+    height: 90vh;
+    align-items: center;
+    background-color: var(--surface-color);
+}
+.home-sct1{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+.sign-up-sct2 button,#home button,#contact button{
+    background-color: var(--default-color);
+    font-family: "Poppins";
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+}
+.sign-up-sct2 button:hover,#home button:hover,#contact button:hover{
+    background-color: var(--span--color);
+}
+#home img{
+    z-index: 1;
+    animation: up-down 2s ease-in-out infinite alternate-reverse ;
+}
+@keyframes up-down {
+    0% {
+      transform: translateY(10px);
+    }
+  
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+footer{
+    background-color: var(--default-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+}
+.footer-info{
+    display: flex;
+    justify-content: space-around;
+}
+.footer-right{
+    display: flex;
+    justify-content: center;
+}
+footer .sections img{
+    height: 30px;
+}
+.sections{
+    display: flex;
+    gap: 1rem;
+}
+.follow{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+@media screen and (max-width:900px) {
+   #home img{
+    width: 350px;
+   }
+   #home h1{
+    font-size: 1.5rem;
+    text-align: start;
+   }
+   #home h3{
+    font-size: 2rem;
+   }
+   #home p{
+    font-size: 0.5rem;
+   }
+   #home{
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+   }
+   .home-sct1{
+        width: 27rem;
+   }
+}
+/* CONTACT PAGE */
+#contact{  
+    scroll-margin-top: 70px; 
+}
+.sct1{
+    color: white;
+    height: 20rem;
+    background: url(images/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-position: 1% 55%;
+    width: fit-content;
+    color: black;
+    display: flex;
+    gap: 0.3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+ h1{
+    font-size: 3.5rem;
+}
+.sct1 p{
+    padding: 0 4rem;
+    text-align: center;
+}
+.sct2{
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem;
+}
+.sub-sct2{
+    display: flex;
+    width: 35rem;
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+.sub-sct2>div{
+    display: flex;
+    gap: 3rem;
+}
+.sub-sct2>div>div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 12rem;
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: #43766C 2px 2px 1px;
+}
+.sub-sct2 form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+#contact input{
+    width: 31rem;
+    height: 3rem;
+    border-radius: 1rem;
+}
+.sign-up-sct2 label,#contact label{
+    font-family: "Matemasie";
+    color: var(--span--color);
+    font-size: 1.2rem;
+}
+#contact textarea{
+    border: black solid;
+}
+@media screen and (max-width:900px) {
+    #contact input{
+        width: 21rem;
+        height: 2rem;
+    }
+    #contact textarea{
+        height: 10rem;
+    }
+    #contact h1{
+        font-size: 2rem;
+    }
+    .sub-sct2>div>div{
+        height: 9rem;
+    }
+    .sub-sct2 iframe{
+        height: 15rem;
+    }
+ }
+/* Events page */
+#tour{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem;
+    scroll-margin-top: 70px;
+}
+#tour>div{
+    display: grid;
+    justify-content: center;
+    padding-top: 2rem;
+    grid-template-columns: auto 2rem auto 2rem auto 2rem auto;
+    grid-template-areas: 
+    "a . b . c . d";
+}
+.tour-sct1{
+    grid-area: a;
+}
+.tour-sct2{
+    grid-area: b;
+}
+.tour-sct3{
+    grid-area: c;
+}
+.tour-sct4{
+    grid-area: d;
+}
+#tour>div>div{
+    background-color: var(--surface-color);
+    border: #265073 solid 3px;
+    width: fit-content;
+    border-radius: 20rem 20rem 0 0;
+}
+.tour-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    width: 15rem;
+}
+#tour>div>div>a img{
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    padding: 0.4rem;
+}
+.tour-desc,.tour-map,.tour-review{
+    display: flex;
+    gap: 0.5rem;
+}
+.tour-desc img,.tour-review img,.tour-map img{
+    width: 1rem;
+    height: 1.3rem;
+}
+@media screen and (max-width:900px) {
+    #tour>div{
+        display: grid;
+        grid-template-columns:  auto 4rem auto 4rem auto;
+        grid-template-rows: auto 3rem auto;
+        grid-template-areas: 
+        "a . b . c"
+        ". . . . ."
+        "d . . . ."
+        ;
+    }
+    #tour>div>div>a img{
+        width: 20rem;
+        height: 20rem;
+        padding: 1rem;
+    }
+}
+/* About page */
+#about h1{
+    font-family: "Matemasie";
+    text-align: center;
+    padding-bottom: 3rem;
+}
+#about{
+    scroll-margin-top: 70px;
+    display: flex;
+    padding: 5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: justify;
+}
+.img-about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.img-about>div {
+    display: flex;
+}
+.passport-img{
+    width: 15rem;
+}
+.car-img{
+    width: 20rem;
+}
+.map-img{
+    width: 17rem;
+}
+/* Sign up page */
+#sign-up-content{
+    scroll-margin-top: 90px;
+}
+.sign-up-sct2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 5rem 6rem;
+}
+.sign-up-sct2>div{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+} 
+.sign-up-sct2 img{
+    height: 42rem;
+    width: 29rem;
+    border-radius: 2rem;
+}
+.sign-up-sct2 form div{
+    display: flex;
+    flex-direction:column;
+    gap: 0.3rem;
+}
+.sign-up-sct2 form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.sign-up-sct2 div>input{
+    height: 2.4rem;
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+.sign-up-sct2 div>input:focus{
+    border-color:var(--span--color);
+    outline: none;
+    box-shadow: 0 1px 8px rgba(0, 123, 255, 0.2);
+}
+@media screen and (max-width:900px) {
+    .sign-up-sct2 img{
+        height: 35rem;
+        width: 23rem;
+    }
+    .sign-up-sct2>div{
+        gap: 1rem;
+    }
+    .sign-up-sct2 form{
+        gap: 1rem;
+    }
+}
+/* galery page */
+#gallery{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    scroll-margin-top: 70px;
+    padding:  5rem 0;
+    gap: 4rem;
+    font-family: "Matemasie"
+}
+#gallery img{
+    width: 15%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.1rem;
+    filter: grayscale(100%);
+    transition: all ease-in-out 0.5s;
+}
+#gallery img:hover{
+    width: 35%;
+    filter: grayscale(0%);
+}
+#gallery>div{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: 450px;
+    gap: 10px;
+}
+/* Book page */
+
+.book-title{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    padding-top: 3rem;
+}
+.book-title >div{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.place-desc div{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+}
+.place-desc{
+    display: flex;
+    gap: 3rem;
+}
+.book-imgs{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 2rem;
+}
+.book-imgs img{
+    height: 30rem;
+    border-radius: 1rem;
+}
+.book-sct1 p{
+    padding: 1rem;
+}
+.book-sct1 ul{
+    list-style-type: square;
+    padding: 0 3rem;
+}
+.book-sct1 {
+    width: 55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 2rem ;
+}
+.book-sct2{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: max-content;
+    padding: 1rem 2rem ;
+    height: fit-content;
+    background-color: rgb(239, 239, 239);
+}
+.book-desc{
+    display: flex;
+    gap: 4rem;
+    padding: 2rem 5rem;
+}
+.book-sct2 form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.book-desc form>div{
+    display: flex;
+    justify-content: space-between;
+}
