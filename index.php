@@ -1,17 +1,21 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adventure - Explore the world</title>
-    <link rel="website icon" href="images/about-map.png">
+    <link rel="website icon" href="images/logo.png">
     <!-- style -->
      <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
         <div class="logo">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAYAAABXuSs3AAAAAXNSR0IArs4c6QAABP9JREFUaEPtmHuIVFUcx7+/OzuT22qQZpERSUsa7c6dpi1kMedOUoYhldaiFEVYLbQQW7Q7M2bECJFzpygJpIf2+CPC3lhtVBI7dxYsxUnnTkpSUe4qipI92Fzdx/3lWWds3HmdOzPqLuz593x/v+/nnPO753EJE7TRBOXGJPi5XrnJGZ+ccckZGDel4gn5FlmAl0C9zin9mxPhxLFiYxgP4OQOahsJWJkFumNkcPD23S9/d7QQ/HkFb2lpcey9+vC7AFaMBSRga1I3bgbA+eDPK7g7qH1CwNIiJdFm6sar4wpcDWmbwbiz6LfI+MqMGottgTeFmy4cHJj6OhGYmPeBlAMWWb2w0Oc4ofTtWhf7S3IDyJG5g9rXJ0thUal4Bt5K6cbD0uDNTzbX/utydQG4pUjyfgB9APeCqe/kx9VrAftJ4X2wHAfMaPfesbFiMoYGpn5RIu//YUzNZjT2vTS4GtQ+BrCs1IxI9P8B4DcAB0HogwUvCM0ScWDw/Sk9/p6tXWVuYP40FznbCfwEgBkyRlXUMED3mXpsU9n7uNqxqA41J9rAeArAZVWEK5RKCloES22Hs8P+KRcd41YQAgCuOEsDkIaWBs+ANrU2OYcvrlvJoBCA2VUcgC1o2+AZUHHi/VR/5AFiXgVgToUDsA1dNvhp0DAU9bi2HIzVABrKHMDhk6ej7e9HqsYlgMgT8C1lomcAeCX0Z0im15IzFo4N24mrFvjo6qlB7R0AD9oBEFrF4jm7Xoj/bCeuWuBlQ4/CsnKrGe3+9lyDC2hxwuVcTWVBmLEyFTXeltVX/HEWu0/bgQBz2IzG19iJKVgqjat9V9bVnPh725pt/xRKqAb8m0C83I5hfi29aeqxR+zkyQvuDvrcBIoBmM7AHiIkYGGHBdr6YzS2Qxh4gtoHDLRImm0A8GghLQFbkrpR8pqbHZ8D3tixQFUcSreALgIldoBrpKCZ7zKj8c/UkPY7GFcViNlr6sa1UvnSohxwNaR9DsYSO0kKatPQol8NaG0grC+gPW7qRq0dz7yl4gn5vMzUgVOl4LSTMK0dBvM9YqYzsQ3hBpdj4JL9AGbmy+dQrEt3ru05IutVdB/3BubPGibH4wRqLVE62X450JlONeBbDaLn8sExKTemIt2JqoBnkqSfcg8BaAcwt0jygtAiRjxQLqCaAwCmjc1BhGXJiPFpVcGzk3k6/UsshZ8l4KZcc16RjMTfL2auBrQoCJ05Gka7GTVeOWvgInFj58J6RRkRO8sZpUZszUtGe7YXM/euWjBzxFJErbuydQy8lNIN8dKSamXfVdSA1gXCHdkuRPRYMhJ7rZSzGtA2gDD2wPnI1A3Zc0Hu6ZYPxB3UFhPw5Rl9jI1m1Ch40GS014f8sy3mX8XFMCt+u6kb80oNOtNf9oynr7GiXOqzzH4wdaNJxlwNah8CuDdLe8jUjctlYoWmEnCoQV87QOuyzIacf/bXJd5IDJUCUJ/2N2KEU1k6nl5LLtkHRUXgDWH/VMcAHwJQd3oJiW9IRuI7S4GLfk9Q+4aB2zJap8OalXi+56BMbEXgwkANaevBaMuYlfoDlQ2lhnwLwTT6gGCgNaUb4jIm1SoGT2+Nv5wy564Ztcrdsss9OvCgto0JL6Yihqh56VYxeNp8CwNHU7ph+24uym13OCZ+oNpqVQH3rlpw3c61PXtsOVcorgp4hQxlhU9Y8P8AvqioPn90TNYAAAAASUVORK5CYII="/>
+            <img src="images/logo.png">
             <h3>A̶D̶V̶E̶N̶T̶U̶R̶E̶ S̶E̶E̶K̶</h3>
             <span>.</span>
         </div>
@@ -22,10 +26,21 @@
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
+        <?php if(isset($_SESSION["loggedin_user"])): ?>
+            <div class="header-profile">
+                <p><?= $_SESSION["loggedin_user"]["name"]; ?></p>
+                <form action="back-end/logout.php" method="POST">
+                    <button class="sign-up-btn">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        <?php else: ?>
         <button class="sign-up-btn">
             <img class="btn" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAA7tJREFUWEfFll1oFFcUx/9nJms2RBSNQaw+CC00Ndld49JAtdlZrRQRbPGpxY9iX0oFRfxIZtMXVykksyYqvgilFEp9rKBiKRbS7KxEBV3NzpgiFKIIosaPiEazbjJzmtkPSNfZ3ZkkkHmce87/d86559x7CXP40RyyMS144/5PFovV1S0EsxEm7o6TceMfpf++20RcwRujjfOq0nU9zLSnGMTgP+ZNCLuSPfGnToNwDG/uaK03TCEBoKGM+DARb0p1JW45CcAx3C+HzgH0ZU6UewE6SxCGQMZyBoXB2JkH3jFqngYGo4OZSgE4gvvl0DcA/ZrFAsd1RT1YLByQwzsY/FsuNurRYvFDswOPSAkwWgGMempGlyajyTd2wn5ZSgJYw8BLXVEXzgo8IEv/MvABGFe1mLq2lKi/PXQaRN9n143q+Vr3X6/LBeCw7NJNAM1g7tdiiU9LCfpk6RQBewGMe0ZGa5M/JcdnDA/I0i8MfAtgWFPUpWXglwj4HMBNTVGDs1L2Jjm0VgD155qJd2mxRLb5pn5Nh1r9gigMACAw9mkx9dSswC0Rf0Q6D8YXADLE+NEA/54eqx3yet+uEMUJiZliAOoADHlGRhsqldzSdLTnlqGvI9xAJt8AUFsmI2YIW3Wl73ylrF3BLeOmtg3vi4JxloGAjfgjBn+lKwnrFHT0Oc68oBb8LujJLJq/EcAKAuoBjDDTQzGD+MDJ+AtH1LyRa7gb8Uq2juC+yPogYGwkphYA6wDYjdsrMPpZwHUyBVWL9fXOCB78oXXZuCEcB/B1JaHi9cl5v2IY5u7b3Ze1Ur4lM/fJoW0E+hlATd7ZOq10Bl0nwqN3YMwLmLkFRKunTASD6KjWFY/aBWALt7paEIzbALw5J+6FMbFN674yXKkCK6Nh78K0eWzqg4OBzbqi/mlTnaJfUQi+MekaAR/nZ/FwSlGPVoIWr0/ecFsm7wNr3q0EHxuZzKrBE1efT7V7J3N/JLQBTPlm4UuaktjkFlyw98mhTgJFsrUjHNC71BMV4OEomA9b8ysK5oe3Oi8/mS7cevOJY0us8/4jAs6lFHVrebgs/Q1g/eT9fUZX1MLTaLp8605oA8M6959pirqkJDwcDVc9H+NXuUbjbk1JtE2bmnf0tYe2E9GZXP8ITSmlb7Cg+b89b25f955BVQ+yi0RHSo2Im4DyjXchK2nSltSx+EVbuLVHnnR94Zl0b6Arfs8NyM62oeOzOi8bPmstTaJ+p7P3mS18piC3/o7OdreiTu3nFP4fSClNLyX6WZoAAAAASUVORK5CYII="/>
             <a href="#sign-up-content">SIGN IN</a>
         </button>
+        <?php endif; ?>
     </header>
     <main class="main">
         <section id="home">
@@ -39,6 +54,7 @@
                 <img src="images/home-image.jpg">
             </div>
         </section>
+
         <section id="tour">
             <h3>Explore the world</h3>
             <h1>Amazing Featured Tour <br><span>Package</span>The world</h1>
@@ -145,6 +161,7 @@
                 </div>
             </div>
         </section>
+
         <section id="gallery">
             <h1>Check Our Gallery</h1>
             <div>
@@ -157,6 +174,7 @@
                 <img src="images/gallery-img7.jpg">
             </div>
         </section>
+
         <section id="about">
             <div class="img-about">
                 <div>
@@ -172,10 +190,11 @@
                 Our mission is to inspire people to embrace new challenges and explore the extraordinary. Partnering with local experts, we offer authentic, unique experiences that go beyond the ordinary. Let us guide you on your next great adventure and help you explore the world, one journey at a time!</p>
             </div>
         </section>
+        
         <section id="contact">
             <div class="sct1">
                 <h1>Contact Us</h1>
-                <p>We’d love to hear from you! Have questions or need help? Fill out the form below, and we’ll get back to you soon. Let’s make your next adventure unforgettable!</p>
+                <p>We’d love to hear from you! Whether you have questions, need assistance, or want to learn more about our adventures, feel free to reach out. Fill out the contact form below, and our team will get back to you as soon as possible. We're here to help you plan your next great experience. Don’t hesitate to drop us a message, and we’ll make sure your adventure journey is smooth and exciting!</p>
             </div>
             <div class="sct2">
                 <div class="sub-sct2">
@@ -208,7 +227,7 @@
                 </div>
                 <div class="sub-sct2">
                     <h1>Get In Touch</h1>
-                    <form method="post">
+                    <form action="back-end/contact.php" method="post">
                         <label for="name">Name : <br><input type="text" name="name" placeholder="Your Name"></label>
                         <label for="email">Email : <br><input type="email" name="email" placeholder="You Email"></label>
                         <label for="subject">Subject : <br><input type="text" name="subject" placeholder="Your Subject"></label>
@@ -219,41 +238,48 @@
                 </div>
             </div>
         </section>
+
+        <?php if(!isset($_SESSION["loggedin_user"])): ?>
+            <section id="sign-up-content"> 
+                <div class="sct1">
+                    <h1>User Login</h1>
+                    <p>Welcome back! Please sign in to access your account, manage your adventure bookings, and explore new experiences. Enter your credentials below to continue your journey.If you're new here, don’t forget to sign up and start exploring the world of exciting adventures today!</p>
+                </div>
+                <div class="sign-up-sct2">
+                    <img src="images/sign-up.jpg">
+                    <div id="signup-form">
+                        <h2>Create An Account To Get Started</h2>
+                        <?php if (isset($_SESSION["loggin_error_message"])) { ?>
+                            <p class="login-error-message"><?php echo $_SESSION["loggin_error_message"]; ?></p>
+                            <?php unset($_SESSION["loggin_error_message"]); ?>
+                        <?php } ?>
+                        <form action="back-end/login.php" method="POST">
+                            <div>
+                                <label for="name">Name :</label>
+                                <input type="text" name="name" placeholder="Enter your name*" required>
+                            </div>
+                            <div>
+                                <label for="email">Email :</label>
+                                <input type="email" name="email" placeholder="Enter your email*" required>
+                            </div>
+                            <div>
+                                <label for="password">password :</label>
+                                <input type="password" name="pwd" placeholder="Enter your password*" required>
+                            </div>
+                            <a href="#">Forget Password?</a>
+                            <button type="submit" id="sign-in">Sign In</button>
+                            <div>
+                                <p><input type="checkbox" name="agree" required>By signing up, you agree to Customers.ai’s Terms Of Service and Privacy Policy</p>
+                            </div>
+                            <div>
+                                <p>Don't you have an account <button type="submit"><a href="#">Registrer</a></button> </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        <?php endif; ?>
     </main>
-    <section style="display: none;" id="sign-up-content">
-        <div class="sct1">
-            <h1>User Login</h1>
-            <p>Welcome back! Please sign in to access your account, manage your adventure bookings, and explore new experiences. Enter your credentials below to continue your journey.If you're new here, don’t forget to sign up and start exploring the world of exciting adventures today!</p>
-        </div>
-        <div class="sign-up-sct2">
-            <img src="images/sign-up.jpg">
-            <div>
-                <h2>Create An Account To Get Started</h2>
-                <form action="back-end/save.php" method="get">
-                    <div>
-                        <label for="name">Name :</label>
-                        <input type="text" name="name" placeholder="Enter your name*" required>
-                    </div>
-                    <div>
-                        <label for="email">Email :</label>
-                        <input type="email" name="email" placeholder="Enter your email*" required>
-                    </div>
-                    <div>
-                        <label for="password">password :</label>
-                        <input type="password" name="pwd" placeholder="Enter your password*" required>
-                    </div>
-                    <a href="#">Forget Password?</a>
-                    <button type="submit" id="sign-in">Sign In</button>
-                    <div>
-                        <p><input type="checkbox" name="agree" required>By signing up, you agree to Customers.ai’s Terms Of Service and Privacy Policy</p>
-                    </div>
-                    <div>
-                        <p>Don't you have an account <button type="submit"><a href="#">Registrer</a></button> </p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
     <main id="book-now" style="display: none;">
         <div class="sct1">
             <h1>Book Now</h1>
@@ -319,36 +345,58 @@
                     </div>
                 </div>
                 <div class="book-sct2">
-                    <h2>Book This Tour</h2>
-                    <form action="" method="post">
-                        <input type="date" name="date" >
-                        <div>
-                            <h3>Time :</h3>
+                    <div>
+                        <h2>Book This Tour</h2>
+                        <form action="" method="post">
+                            <input type="date" name="date" >
                             <div>
-                                <input type="radio" name="time" value="val1">
-                                <label for="time">14:00</label>
-                                <input type="radio" name="time" value="val1">
-                                <label for="time">16:00</label>
+                                <h3>Time :</h3>
+                                <div>
+                                    <input type="radio" name="time" value="val1">
+                                    <label for="time">14:00</label>
+                                    <input type="radio" name="time" value="val1">
+                                    <label for="time">16:00</label>
+                                </div>
                             </div>
-                        </div>
-                        <h3>Tickets :</h3>
+                            <h3>Tickets :</h3>
+                            <div>
+                                <P>Children(0-12 years)$129.00</P>
+                                <input type="number" name="nb-child" min="1" max="3">
+                            </div>
+                            <div>
+                                <P>Youth(13-17 years)$169.00</P>
+                                <input type="number"  name="nb-youth" min="1" max="3">
+                            </div>
+                            <div>
+                                <P>Adult(18+ years)$189.00</P>
+                                <input type="number" name="nb-adult" min="1" max="3">
+                            </div>
+                            <div>
+                                <h3>Total : </h3>
+                                <h4>$13</h4>
+                            </div>
+                            <button>PROCCED BOOKING</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h2>Book With Confidence</h2>
                         <div>
-                            <P>Children(0-12 years)$129.00</P>
-                            <input type="number" name="nb-child" min="1" max="3">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAA5pJREFUWEftll1oHFUUx/9nxpq6Yq1N/SoKCoIpLdo8lFawkuystRGhL1opPljBprYz04bqzqaIZfRF964amp1NtPgQtARxX/wAa3Vvdm2VQJ+kQj8sKoU+BCv9wBJDujNHZ3cTJtv9mmApqPN0Z+/5n985/3vmsoTr+NB1ZOPfC4/1m53Fhe7pgj10uZbD16zzmGWuZeJDYIxL4fQA4OoCrhlcs8yDAG/wgcTYnUs5A6Hh6/cYHUUXjyiEOz2Pznhw84XU0ESzQX3cMpZ5wDEA7QDOTyFy3/dC/BHUNexci+t7QbQXgBoQXSTiLblk5rPqAqJxcz0Rb5LCedHfiyX07cw0VIojflkmM++2BI/Gzc1EPFqnwylmWjmWSv88s6/171gNTzkMYKEHbMwL5/Mu275Bnfzdd6kdjIJMOd0twTXL+AXA/XXtJR6RycwLM/vRhNFDjC/L75yXIhP1V5qlHwDoOQDFySsLFo0PDPw5o6lpe1df32L1xuKFRufKjJNjKWd5MEazDL/zdQCmpXDaSvCEvhtM7/hrD2pHXuw71RDeY5qLpm/iS42Hik9JkekIxsQsc4DBfaUjpunFueT+S1rceBaEj8txSlSKwXxDeNku4ziAOZ3NKabK9tKAWcYoA5v9tRtZuqBg20XN0p8HaKR0GKA1YyJ9tAW4+TTA2TrdX2Gm5cGBe7R/+21tnnoSwB0AHZMi/XCliTf+ruW1UkGgewsifbYp3A+IWsarBLxe9amdZ6ItY8n0F3PP29wJ8L7yb7RLivRgBT4OYC2ACSmcZcGbrukN153QVyhQNhHzKib+VnXdA1+//d5vNRwhLa4Pg5QVS36d6Mpms263tetBBa7vhl/QB1KktwZ1TeGNh+7qXd/+794aLn0pwSsWTI/JVPpIU3gs0XsruK2X2VsHok4A9wREJwj4AUxfFW9uH/WHqlaBUct4iYDhyt5BKZwnq+Ou6ryrf8cDqqf4Fd7VQteH3cjlJwr2yFR1bGDyJ6Fyp3wz81NDeAXsXxR3twCuhHB+SeT2DVnbng5qbNtWjkye+5CIPsolnUO18s3pXIubn4J4Y+vgyigB23LC2T8PXVmi7dHb4dI5fyzDJgFwVApnTVjdLCgaN54hwidhE8zEuxHvlnp/l+rlnIXHLKOXgffnCyfCQ7mk82MY/Sxci+tPMdErYcTBWJWVrd+kBk+H0c/nfMPkbxj7P/wfszJMov+u7X8BYi1IL4Rm5mgAAAAASUVORK5CYII="/>
+                            <p>Customer care available 24/7</p>
                         </div>
                         <div>
-                            <P>Youth(13-17 years)$169.00</P>
-                            <input type="number"  name="nb-youth" min="1" max="3">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAArhJREFUWEftlE9IFGEYxp93Jg02SlEiggiECEOIokN0CGx3UcnMUx46SEFu0M6GgrObh2yOrn/AdFfKDnnIiCKqQyA2q5vQJQiCIImg8BaZYmBmuvO9tbVr458ZZ3NhO7inXXje5/c+z37fR8jhh3LIxiY8J+3/37VXtCilCQPHJMIuIWhCwBiNd/R9ykZVtsk9qr8VRK0AZBNshojP6eHok40uYAn3hpSzzBi0APyQBQ4Md0Y+bmQBS7gnqHwAUGJpTjwQC0fPZx1e2dRUlMhbnLI1JryNhSNlTuHljY2F8e7uGbN+zeQ1ms81N5f/zd6Y38Xao6VO4F41UM/EPUKSPKNtPa/SM5a1u1VlnAjW5g5rd6v+C0R0KwlkYFK4ZvfGtYH55G87+Bki3LdItsAG7x/pik7YJfeGAg3M3J/SzLOE6pG2yMi6yZMCT1C5+mvhayuu2jQR1evh3qcrwOQN+Xbo4f6vf2YDlwG+bgW2TZ42PhHyl0mQ6oj5EBM/lw3jznDnjc9mcLmmbZHmpgYJXGaAqmQSdWDqSoNJUI3e2auvbCkrz6s76A8RqC1lPg2gKPV9kQSdXAtsmdwb8hWAt/qYxXEQHQawx7T1OAGvwTSU2FZ8N65piSM+X15hQd5DENWYdItgcTrW0TdkdS5WJa9oVkoMCS8A7HZwjcYM12xl8vT+XqAw/xGAagALYFFrB16VvPzKpX2ykMYcglO78WiRa2fVA01bSP738vcv9wh0e40DuSrLsuQeNfAYxLUOEi+TEHBRb4+kr5Tj8SW4p8VfDIMm7e6+jevLWHvkqGNqSrgEd6uK3aOyrq/hEtvjWt/sukKTYAnuDSo+Bm5mMmzWEuGgHo68yWT+b+2q/xQTNWcybNbKLDU86+h5n8l8Vh6ZTIDL2vrXwWzMbSbPRosZe+S09p+UMOkg3hm0ngAAAABJRU5ErkJggg=="/>
+                            <p>Hand-picked Tours & Activities</p>
                         </div>
                         <div>
-                            <P>Adult(18+ years)$189.00</P>
-                            <input type="number" name="nb-adult" min="1" max="3">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAA89JREFUWEfFlkFsFHUUxr83s9tKBSkiHuRgYiIJConReDBqgZ3hgMLNgxqMiQkLdneMBXemciBrIF13uhDJzmDZkGAwJMYevFiIZac0EE08EGJCguilBxNRa6SJbGmXmWemu1N3tzPT2U0T5rjz5v3e9/Z77/8nPMCHHiAbHcN3Kcoj1VX85n3QhUm9+FsnItqGb8/2r47dFT8E8UEG1gGYB3AmFosd+27os9/bKSIy3IWKFVIA+gjAoz6QOSaU4mIsF7WIZeF7ssmeymxXGgwVwHoPysANAXSdwe+0FDJPoFOCU82NF0b+DOtEINyFzla6Uw44Q8CG/5PwLSIcKefNUUlTkmAeCQDMAvS5bc/lJo+Xpv1ilsBfGhhY1RO/3w+wq/TxBugUs/DJ+qnbX46Ojtru75Km7A+Be59WADZtu6q3FtEEz2azwtXK9DUAzzVUehvEx+78Uy1dK5WqjQpkNZ1k4HQ0k9E0YsIWa+jkH158EzxxKPUkiTRVe0nTxDwUv0enLhaLc34AWVP2MXMpGhwgot3lfHHMF74z88HTDjm/1F7yYUs3c2GJ21PupuQ91rD5rb/ygQMbKR7zFkbO0o3DofA2lYOpzxouXvWF18xWrSw0HTDKuqGspHJRxObxnPGzL3zBwaryF8CPARizdGP3Cipnu+ffnsnsF/dC4OkrAF4FMGPpRm8YPOKoeSl+tXRjU2O+JXMuqcpxgA8utJ5RAOFuUAHM7BCREFgg42EmuOvYddt5Szf3hsJlTXmdmRcdGTpGzKetYfNAUIyspd9mxvmaEHq3PFw8Fwp/IZmM9/bG/wZoTYT5LVm6sT8oTtLSl8CQAVRF56F144VCUxd9d7uUSY2AKDDpIixEufRxahNsulWP/crSjbdai/SFJzKp54nIXbPhTwhcVpVz3onHxNsm8qZr5KYn8FRLqEqZwNIyeN+278ikXhOI6muUf7B082W/PIFwefD9p9gRbwLoCnbzUsNJh5RnIPKPAFYDsB2Iz17WT3rtj6bcjZK19CAzgvd7S9vr//NlAE/UKUcs3TgaVHzoTabm/K4ygD7fBA1wabD/RXaEMe/iwcD3M3fmd7Qew6Gj1gqRteRa5i73MNi6pIA6vH60mgDiC+vEvWLR/CvlfGkmzDPL3uHcj+uXx7MAvdGUjDHBhG4CFg3FoK9jTvd7rTPdluH8giUtraLmAb+VaoNYtfLmieUm1HsfSXljMklN7WTQCQK2NPx+kwT0lz81JqOC3bi24V7yxGA6ITjocxz+aaJgftMOtGPlnUA6GrWVBPnl+g+Dlo8vkP0G6QAAAABJRU5ErkJggg=="/>
+                            <p>Free Travel Insureance</p>
                         </div>
                         <div>
-                            <h3>Total : </h3>
-                            <h4>$13</h4>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAABDRJREFUWEfFll9sU3UUx7+nvS3rnJgsm0A0wDTGB1HMdA/TLMF2ahbFqKFOCMkMGsC0l2yGtrDwcI0ZrLcqJW0RFSPRAGITeBiKJL2lIE8GHkSJzn/sSUDntmjWjbb3Hncnw3bcPys8cB/vOd/zOb/f75zf+RFu4Ue3kI2q4d6ejXfB7Wp2MC/SgEYCRgl0SSVt8EQ0db6axcwJvkJ6pcY5UbcJjE4AzeYAHgLooFB0vX18584Ru0Rs4d6QuJqIZQB32wUrs4+B+K02T2NckiTNTGcKb+3p8XiE4l4irKkCWuHKwElX0fWi2S4YwjtEcV6hBl+DuOVGwWW634Siq8UoAUO4LxT8FIS1VmAGvgfwFwFuAK2WSTKybbc1PDn7CK6Dt0eCa5ix33bFzCuVWOro073di0ql0u92/gzekpVT0XK/Crhfktwj+eGfASy2CPYDMR1wCXj/2I7En9OaieFuMDYAuMdUR/hbvSIsycXjYzM+FXBfRNwA5j0W4EPuCeo6lkhcme3TsVVsLKjaNwAttajuNzNyUjKEe8NihsA+E/EZtbahNSdJJd3u2/z6Q+Sk+SVP/kxO2jc5/S8cfHWqJfdaJH9ekZPLroO3R9bfweweBiAYi7lXkVM7dJs3FNxf1oLjGtHjJ6KJb/9bPf9hdf6qQ2jK9ceHdJ9r2+4LiW0gPmUmZHBPVk7Fr67wHIAH7YrM0E68WommPquAezcHXiAHHTYNyDygxFLP6Xa9yEYnhx+b8WWm+8H8GoBH7RIiwtZMNNlfufJwoGuqWPZZiYm4MxNNfW7mc/UqPmCZAGGXEk12V8DbI+IzzHzULnMGDhPhCFT1XH3dgh/TklQo1/gigY/AtM78+LAtKyf7Krc9FGgmorN28Fl2fWj8CtDJ+guXNqbTadUXDj4P4IgFfF1WTn5cAdcHSa2rqI/BGiMhAXvgwCHdxhr041lS5jcuCMJ9x7fHL3q3BL2kQTGDa8TLZuZ+5SUTDg4AeNZE+IUiJ6dtHaI4f9LDKxzgB4gdTnY5PlS277o83QmRQB+Yeo1j8JAip5pmbLPgNkXHWocS2/2VRcE9RcRfAnAa+jBkJZaMGML9fr9zpGnBIIB7TQD6GffBoQ201dx5dmZKPRERl5PGLxNBD2z2Rsi7nbRUnweGcP2nNxT0E8G0na4lVfVU+7/KTeHT5xYO6gXVZdnzwEEAPzHodoDfsOmSU/UXLnv1bij3M9wi/cEo5OtOM/BIla1n4M5Dqlpsyb3zgT43Kj7LN1ytq/AJQKtuOAFCRii4Oqt6w5XDfJHgWjBiABbOPQn+B3BsU+REQr8WzHS2T2dduFJaX5sfn9cN4pembq/l5knwIBPSBdLePd3/3qhdsnOClwdpj2xarLL2sBNYyEwNIB5jjS9qAn+X69/9ix3QtuCqCXAzvlWv/GZgs7X/AtHaly9MiMukAAAAAElFTkSuQmCC"/>
+                            <p>No-hassle best price guarantee</p>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>

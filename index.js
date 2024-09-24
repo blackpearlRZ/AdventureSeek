@@ -1,4 +1,4 @@
-const signUpLink = document.querySelector(".sign-up-btn a");
+const signUpLink = document.querySelector("header button a");
 const mainContent = document.querySelector("main"); // The container for all sections
 const signUpButton = document.querySelector(".sign-up-btn");
 const signUpContent = document.querySelector("#sign-up-content");
