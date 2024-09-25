@@ -1,6 +1,7 @@
 # AdventureSeek: Your Gateway to Thrilling Travel Adventures
 AdventureSeek is a comprehensive platform that allows users to search for, book, and manage travel experiences with just a few clicks. From outdoor challenges to cultural tours, our mission is to bring the world of adventure to your fingertips, making it simple and accessible for everyone.
-<a href="https://medium.com/@chaimaeaafif/adventureseek-your-gateway-to-thrilling-travel-adventures-c65308e59eae">Read our final project blog article</a>
+
+<a href="https://medium.com/@chaimaeaafif/adventureseek-your-gateway-to-thrilling-travel-adventures-c65308e59eae">Read our final project blog article</a> <br>
 <a href="https://www.linkedin.com/in/aafif-chaimae-911372150/">Connect with the author on LinkedIn</a>
 
 ## 🚀 Features
