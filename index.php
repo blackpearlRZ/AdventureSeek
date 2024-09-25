@@ -38,7 +38,7 @@
         <?php else: ?>
         <button class="sign-up-btn">
             <img class="btn" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAA7tJREFUWEfFll1oFFcUx/9nJms2RBSNQaw+CC00Ndld49JAtdlZrRQRbPGpxY9iX0oFRfxIZtMXVykksyYqvgilFEp9rKBiKRbS7KxEBV3NzpgiFKIIosaPiEazbjJzmtkPSNfZ3ZkkkHmce87/d86559x7CXP40RyyMS144/5PFovV1S0EsxEm7o6TceMfpf++20RcwRujjfOq0nU9zLSnGMTgP+ZNCLuSPfGnToNwDG/uaK03TCEBoKGM+DARb0p1JW45CcAx3C+HzgH0ZU6UewE6SxCGQMZyBoXB2JkH3jFqngYGo4OZSgE4gvvl0DcA/ZrFAsd1RT1YLByQwzsY/FsuNurRYvFDswOPSAkwWgGMempGlyajyTd2wn5ZSgJYw8BLXVEXzgo8IEv/MvABGFe1mLq2lKi/PXQaRN9n143q+Vr3X6/LBeCw7NJNAM1g7tdiiU9LCfpk6RQBewGMe0ZGa5M/JcdnDA/I0i8MfAtgWFPUpWXglwj4HMBNTVGDs1L2Jjm0VgD155qJd2mxRLb5pn5Nh1r9gigMACAw9mkx9dSswC0Rf0Q6D8YXADLE+NEA/54eqx3yet+uEMUJiZliAOoADHlGRhsqldzSdLTnlqGvI9xAJt8AUFsmI2YIW3Wl73ylrF3BLeOmtg3vi4JxloGAjfgjBn+lKwnrFHT0Oc68oBb8LujJLJq/EcAKAuoBjDDTQzGD+MDJ+AtH1LyRa7gb8Uq2juC+yPogYGwkphYA6wDYjdsrMPpZwHUyBVWL9fXOCB78oXXZuCEcB/B1JaHi9cl5v2IY5u7b3Ze1Ur4lM/fJoW0E+hlATd7ZOq10Bl0nwqN3YMwLmLkFRKunTASD6KjWFY/aBWALt7paEIzbALw5J+6FMbFN674yXKkCK6Nh78K0eWzqg4OBzbqi/mlTnaJfUQi+MekaAR/nZ/FwSlGPVoIWr0/ecFsm7wNr3q0EHxuZzKrBE1efT7V7J3N/JLQBTPlm4UuaktjkFlyw98mhTgJFsrUjHNC71BMV4OEomA9b8ysK5oe3Oi8/mS7cevOJY0us8/4jAs6lFHVrebgs/Q1g/eT9fUZX1MLTaLp8605oA8M6959pirqkJDwcDVc9H+NXuUbjbk1JtE2bmnf0tYe2E9GZXP8ITSmlb7Cg+b89b25f955BVQ+yi0RHSo2Im4DyjXchK2nSltSx+EVbuLVHnnR94Zl0b6Arfs8NyM62oeOzOi8bPmstTaJ+p7P3mS18piC3/o7OdreiTu3nFP4fSClNLyX6WZoAAAAASUVORK5CYII="/>
-            <a href="#sign-up-content">SIGN IN</a>
+            <a class="signIn" href="#sign-up-content">SIGN IN</a>
         </button>
         <?php endif; ?>
     </header>
@@ -239,47 +239,47 @@
             </div>
         </section>
 
-        <?php if(!isset($_SESSION["loggedin_user"])): ?>
-            <section id="sign-up-content"> 
-                <div class="sct1">
-                    <h1>User Login</h1>
-                    <p>Welcome back! Please sign in to access your account, manage your adventure bookings, and explore new experiences. Enter your credentials below to continue your journey.If you're new here, don’t forget to sign up and start exploring the world of exciting adventures today!</p>
-                </div>
-                <div class="sign-up-sct2">
-                    <img src="images/sign-up.jpg">
-                    <div id="signup-form">
-                        <h2>Create An Account To Get Started</h2>
-                        <?php if (isset($_SESSION["loggin_error_message"])) { ?>
-                            <p class="login-error-message"><?php echo $_SESSION["loggin_error_message"]; ?></p>
-                            <?php unset($_SESSION["loggin_error_message"]); ?>
-                        <?php } ?>
-                        <form action="back-end/login.php" method="POST">
-                            <div>
-                                <label for="name">Name :</label>
-                                <input type="text" name="name" placeholder="Enter your name*" required>
-                            </div>
-                            <div>
-                                <label for="email">Email :</label>
-                                <input type="email" name="email" placeholder="Enter your email*" required>
-                            </div>
-                            <div>
-                                <label for="password">password :</label>
-                                <input type="password" name="pwd" placeholder="Enter your password*" required>
-                            </div>
-                            <a href="#">Forget Password?</a>
-                            <button type="submit" id="sign-in">Sign In</button>
-                            <div>
-                                <p><input type="checkbox" name="agree" required>By signing up, you agree to Customers.ai’s Terms Of Service and Privacy Policy</p>
-                            </div>
-                            <div>
-                                <p>Don't you have an account <button type="submit"><a href="#">Registrer</a></button> </p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        <?php endif; ?>
     </main>
+    <?php if(!isset($_SESSION["loggedin_user"])): ?>
+        <section style="display:none" id="sign-up-content"> 
+            <div class="sct1">
+                <h1>User Login</h1>
+                <p>Welcome back! Please sign in to access your account, manage your adventure bookings, and explore new experiences. Enter your credentials below to continue your journey.If you're new here, don’t forget to sign up and start exploring the world of exciting adventures today!</p>
+            </div>
+            <div class="sign-up-sct2">
+                <img src="images/sign-up.jpg">
+                <div id="signup-form">
+                    <h2>Create An Account To Get Started</h2>
+                    <?php if (isset($_SESSION["loggin_error_message"])) { ?>
+                        <p class="login-error-message"><?php echo $_SESSION["loggin_error_message"]; ?></p>
+                        <?php unset($_SESSION["loggin_error_message"]); ?>
+                    <?php } ?>
+                    <form action="back-end/login.php" method="POST">
+                        <div>
+                            <label for="name">Name :</label>
+                            <input type="text" name="name" placeholder="Enter your name*" required>
+                        </div>
+                        <div>
+                            <label for="email">Email :</label>
+                            <input type="email" name="email" placeholder="Enter your email*" required>
+                        </div>
+                        <div>
+                            <label for="password">password :</label>
+                            <input type="password" name="pwd" placeholder="Enter your password*" required>
+                        </div>
+                        <a href="#">Forget Password?</a>
+                        <button type="submit" id="sign-in">Sign In</button>
+                        <div>
+                            <p><input type="checkbox" name="agree" required>By signing up, you agree to Customers.ai’s Terms Of Service and Privacy Policy</p>
+                        </div>
+                        <div>
+                            <p>Don't you have an account <button type="submit"><a href="#">Registrer</a></button> </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
     <main id="book-now" style="display: none;">
         <div class="sct1">
             <h1>Book Now</h1>
